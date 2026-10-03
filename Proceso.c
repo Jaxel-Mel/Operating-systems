@@ -14,13 +14,10 @@ void escribir_numero(int fd, const char *etiqueta, int numero);
 int main(){
     int   fd;
     pid_t pid;
-
     fd = abrir_fichero(FICHERO_SALIDA);
     if (fd == -1)
         return -1;
-
     pid = fork();
-
     if (pid == 0)
         proceso_hijo(fd);
     else if (pid > 0)
@@ -55,7 +52,6 @@ void proceso_padre(int fd){
     int i;
     for (i = 1; i <= N_ITERACIONES; i++)
         escribir_numero(fd, "PADRE :", i);
-
     wait(NULL);
 }
 
